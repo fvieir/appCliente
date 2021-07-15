@@ -15,5 +15,5 @@ class Cliente extends Model
     {
         return $this->telefones()->save($tel);
     }
-    
+
 }
