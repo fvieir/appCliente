@@ -5,13 +5,18 @@
     <div class="row justify-content-center">
         <div class="col-md-11">
             <div class="card">
-                <div class="card-header">
-                    <h2>Clientes</h2> 
+                <ol class="breadcrumb panel-heading">                    
+                    <li class="active">Clientes</li>
+                </ol>
+                <div class="card-body">
+                        <a class="btn btn-info" href="{{route('cliente.adicionar')}}">Adicionar</a>
                 </div>
 
-                <div class="card-body">
-                        <a class="btn btn-success" href="#">Cadastrar</a>
-                </div>
+                @if(Session::has('messageUpdate'))
+                    <div class="{{ Session::get('messageUpdate')['class'] }}">
+                        {{ Session::get('messageUpdate')['msg'] }}
+                    </div>
+                @endif
 
                 <div class="card-body">
                     @if (session('status'))
@@ -39,7 +44,7 @@
                             <th>{{$cliente->email}}</th>
                             <th>{{$cliente->endereco}}</th>
                             <th>
-                                <a class="btn btn-primary" href="#">Editar</a>
+                                <a class="btn btn-primary" href="{{ route('cliente.editar',$cliente->id) }}">Editar</a>
                                 <a class="btn btn-danger" href="#">Deletar</a>
                             </th>
                         </tr>

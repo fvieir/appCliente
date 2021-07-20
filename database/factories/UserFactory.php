@@ -26,15 +26,15 @@ $factory->define(User::class, function (Faker $faker) {
     ];
 });
 
-$factory->define(Cliente::class, function (Faker $faker){
+$factory->define(App\Cliente::class, function (Faker $faker){
     return [
         'nome' => $faker->name,
         'email' => $faker->safeEmail,
-        'endereco' => $faker->streetAddres,
+        'endereco' => $faker->streetAddress,
     ];
 });
 
-$factory->define(Telefone::class, function (Faker $faker){
+$factory->define(App\Telefone::class, function (Faker $faker){
     return [
         'titulo' => $faker->text,
         'telefone'=> $faker->phoneNumber,

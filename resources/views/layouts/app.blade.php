@@ -22,9 +22,20 @@
 <body>
     <div id="app">
     @include('layouts._includes._nav');
-        <main class="py-4">
-            @yield('content')
-        </main>
+
+    @if(Session::has('message'))
+        <div class="container">
+            <div class="{{Session::get('message')['class'] }} {{Session::get('messagem')['role'] }}">
+                {{Session::get('message')['msg']}}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        </div>
+    @endif
+    <main class="py-4">
+        @yield('content')
+    </main>
     </div>
 </body>
 </html>
