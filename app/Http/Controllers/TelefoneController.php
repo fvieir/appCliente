@@ -41,6 +41,28 @@ class TelefoneController extends Controller
 
     public function atualizar(Request $request, $id)
     {
+        $telefone = \App\Telefone::find($id);
+        $telefone->update($request->all());
 
+        \Session::flash('message',[
+            'msg' => "Telefone atualizado com sucesso",
+            'class' => "alert alert-success"
+        ]);
+
+        return \redirect()->route('cliente.detalhe',$telefone->cliente_id);
+       
+    }
+
+    public function deletar($id)
+    {
+        $telefone = \App\Telefone::find($id);
+        $telefone->delete($id);
+
+        \Session::flash('message',[
+            'msg' => "Deletado com sucesso",
+            'class' => "alert alert-success"
+        ]);
+
+        return \redirect()->route('cliente.detalhe' , $telefone->cliente_id);
     }
 }
